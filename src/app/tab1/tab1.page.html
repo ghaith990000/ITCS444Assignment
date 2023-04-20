@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Register New Members</ion-title>
 
   </ion-toolbar>
@@ -11,6 +11,35 @@
       <ion-label position="stacked">Name:</ion-label>
       <ion-input type="text" placeholder="Enter your Name" [(ngModel)]="name"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="stacked">age:</ion-label>
+      <ion-input type="number" placeholder="Enter your age" [(ngModel)]="age"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">gender:</ion-label>
+      <ion-input type="string" placeholder="Enter your age" [(ngModel)]="gender"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Phone Number</ion-label>
+      <ion-input type="string" placeholder="Enter your age" [(ngModel)]="phoneNum"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Diet type:</ion-label>
+      <ion-select placeholder="Select Diet Type" [(ngModel)]="dietType">
+        <ion-select-option value="normal">normal Diet</ion-select-option>
+        <ion-select-option value="lowcarb">low carbs</ion-select-option>
+        <ion-select-option value="lowfat">low fat</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Subscription plan:</ion-label>
+      <ion-select placeholder="Select Subscription plan" [(ngModel)]="subscriptionPlan">
+        <ion-select-option value="1">1 month</ion-select-option>
+        <ion-select-option value="3">3 months</ion-select-option>
+        <ion-select-option value="6">6 months</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" (click)="subscribe()">Subscribe</ion-button>
   </ion-list>
 
 
