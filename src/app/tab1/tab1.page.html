@@ -1,13 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>      Tab1    </ion-title>
-    
+    <ion-title>Register New Members</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Name:</ion-label>
+      <ion-input type="text" placeholder="Enter your Name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+  </ion-list>
 
-  
+
 
 </ion-content>
