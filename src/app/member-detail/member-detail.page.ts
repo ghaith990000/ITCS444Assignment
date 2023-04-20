@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MemberService } from '../member.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-member-detail',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./member-detail.page.scss'],
 })
 export class MemberDetailPage implements OnInit {
+  public memberID:string | null = "";
+  constructor(public navCtrl:NavController,public ActRoute:ActivatedRoute, public memberSrv:MemberService) {
+    this.memberID = this.ActRoute.snapshot.paramMap.get('id');
 
-  constructor() { }
-
+  }
   ngOnInit() {
   }
 
+  goBack(){
+    this.navCtrl.navigateBack('/tabs/tab2');
+  }
 }

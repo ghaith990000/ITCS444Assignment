@@ -22,11 +22,11 @@ interface MemberInterface {
 })
 export class MemberService {
   membersCollectionRef: AngularFirestoreCollection<MemberInterface>;
-  members: Observable<MemberInterface[]>;
+  members: Observable<any[]>;
 
   constructor(public afs: AngularFirestore) {
     this.membersCollectionRef = this.afs.collection('members');
-    this.members = this.membersCollectionRef.valueChanges();
+    this.members = this.membersCollectionRef.snapshotChanges();
   }
 
 

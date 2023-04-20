@@ -10,7 +10,7 @@ import { MemberService } from '../member.service';
 export class Tab2Page {
 
   constructor(public memberSrv: MemberService) {
-
+    console.log(memberSrv.members)
   }
 
 
