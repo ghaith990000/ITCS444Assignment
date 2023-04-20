@@ -41,4 +41,16 @@ export class MemberService {
       totalFees: totalFees
     })
   }
+
+  getMemberById(id: string): Observable<any> {
+    return this.membersCollectionRef.doc(id).get().pipe(
+      map((doc) => {
+        if(doc.exists){
+          return {id: doc.id, ...doc.data()}
+        }else {
+          return null
+        }
+      })
+    )
+  }
 }

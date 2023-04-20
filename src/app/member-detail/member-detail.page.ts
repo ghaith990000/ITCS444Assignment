@@ -10,9 +10,14 @@ import { NavController } from '@ionic/angular';
 })
 export class MemberDetailPage implements OnInit {
   public memberID:string | null = "";
+  memberDetails: any;
   constructor(public navCtrl:NavController,public ActRoute:ActivatedRoute, public memberSrv:MemberService) {
     this.memberID = this.ActRoute.snapshot.paramMap.get('id');
-
+    if(this.memberID){
+      this.memberSrv.getMemberById(this.memberID).subscribe(member=> {
+        this.memberDetails = member
+      });
+    }
   }
   ngOnInit() {
   }

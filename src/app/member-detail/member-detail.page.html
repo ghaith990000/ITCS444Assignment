@@ -10,7 +10,39 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      
+      <ion-card-title>{{memberDetails?.name}}'s Details</ion-card-title>
     </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">Name: </ion-col>
+          <ion-col size="6">{{memberDetails?.name}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">Age: </ion-col>
+          <ion-col size="6">{{memberDetails?.age}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">Gender: </ion-col>
+          <ion-col size="6">{{memberDetails?.gender}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">Phone Number: </ion-col>
+          <ion-col size="6">{{memberDetails?.phoneNumber}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">Diet Type: </ion-col>
+          <ion-col size="6">{{memberDetails?.dietType}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">SubscriptionPlan: </ion-col>
+          <ion-col size="6">{{memberDetails?.subscriptionPlan}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">Total Fees: </ion-col>
+          <ion-col size="6">{{memberDetails?.totalFees}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
   </ion-card>
 </ion-content>
