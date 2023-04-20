@@ -13,6 +13,7 @@ interface MemberInterface {
   phoneNumber: string;
   dietType: string;
   subscriptionPlan: string;
+  totalFees: number;
 
 }
 
@@ -29,14 +30,15 @@ export class MemberService {
   }
 
 
-  register(name: string, age: number, gender: string, phoneNum: string, dietType: string, subscriptionPlan: string ){
+  register(name: string, age: number, gender: string, phoneNum: string, dietType: string, subscriptionPlan: string, totalFees: number ){
     this.membersCollectionRef.add({
       name: name,
       age: age,
       gender: gender,
       phoneNumber: phoneNum,
       dietType: dietType,
-      subscriptionPlan: subscriptionPlan
+      subscriptionPlan: subscriptionPlan,
+      totalFees: totalFees
     })
   }
 }
