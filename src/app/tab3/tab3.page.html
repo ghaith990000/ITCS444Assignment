@@ -1,12 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>      Tab3    </ion-title>
+    <ion-title>Add New meal</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
- 
- 
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Meal ID</ion-label>
+      <ion-input [(ngModel)]="id" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Meal Title:</ion-label>
+      <ion-input [(ngModel)]="title" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Meal Image:</ion-label>
+      <ion-input [(ngModel)]="imageFile"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">List of Ingredients</ion-label>
+      <ion-input *ngFor="let item of try">{{item}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="newItem"></ion-input>
+      <ion-button item-end icon-only clear (click)="more()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Diet Type</ion-label>
+      <ion-select [(ngModel)]="type">
+        <ion-select-option>Normal diet</ion-select-option>
+        <ion-select-option>Low carbs</ion-select-option>
+        <ion-select-option>Low fat</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Calories</ion-label>
+      <ion-input [(ngModel)]="calo"></ion-input>
+    </ion-item>
+  </ion-list>
 
-  
+
+
 </ion-content>
