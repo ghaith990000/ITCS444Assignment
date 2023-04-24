@@ -68,4 +68,12 @@ this.membersCollectionRef.doc(memberDetails.id).update({
 
 
 
+
+  removeMember(id: string) {
+    this.membersCollectionRef.doc(id).delete().then(()=>{
+      alert("member Deleted Successfully");
+    }).catch((error)=>{
+      alert('Error removing member: ' + error);
+    })
+  }
 }
