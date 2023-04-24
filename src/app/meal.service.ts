@@ -6,7 +6,7 @@ import{DocumentReference} from "@angular/fire/compat/firestore";
 import {map, take} from'rxjs/operators';
 import {Observable} from 'rxjs';
 
-interface MealInterface {
+export interface MealInterface {
   id: number;
   title: string;
   image: string;
