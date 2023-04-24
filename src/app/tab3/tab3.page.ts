@@ -49,7 +49,7 @@ export class Tab3Page {
     this.newMeal.dietType = this.type;
     this.newMeal.calories = this.calo;
     this.mealSrv.addMeal(this.newMeal);
-
+    this.showAlert();
 
   }
 
