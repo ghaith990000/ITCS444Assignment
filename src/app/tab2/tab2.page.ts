@@ -13,6 +13,10 @@ export class Tab2Page {
     console.log(memberSrv.members)
   }
 
+  delete(id: string){
+    this.memberSrv.removeMember(id);
+  }
+
 
 
 }

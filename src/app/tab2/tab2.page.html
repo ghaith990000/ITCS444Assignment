@@ -6,11 +6,15 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item routerLink="/tabs/tab2/member-details/{{member.payload.doc.id}}" *ngFor="let member of memberSrv.members | async;">
-      <!-- <ion-label>{{member.payload.doc.id}}</ion-label> -->
-      <ion-label>{{member.payload.doc.data().name}}</ion-label>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </ion-item>
+    <ion-item-sliding *ngFor="let member of memberSrv.members | async;">
+      <ion-item-options side="start">
+        <ion-item-option (click)="delete(member.payload.doc.id)">Delete</ion-item-option>
+      </ion-item-options>
+      <ion-item routerLink="/tabs/tab2/member-details/{{member.payload.doc.id}}">
+        <ion-label>{{member.payload.doc.data().name}}</ion-label>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-item>
+  </ion-item-sliding>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/tabs/tab1">
