@@ -32,11 +32,11 @@ export class Tab1Page {
     let dietFees = 0;
     let subscriptionPlanFees = 0;
 
-    if(this.dietType === "normal"){
+    if(this.dietType === "Normal Diet"){
       dietFees = 0;
-    }else if (this.dietType === "lowcarb"){
+    }else if (this.dietType === "Low Carbs"){
       dietFees = 50;
-    }else if (this.dietType === "lowfat"){
+    }else if (this.dietType === "Low Fat"){
       dietFees = 30;
     }
 

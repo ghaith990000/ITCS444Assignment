@@ -26,6 +26,12 @@ export class MealService {
     this.meals = this.mealCollectionRef.snapshotChanges();
   }
 
+  getMealsByDietType(dietType: string) {
+    return this.afs.collection('meals', ref => ref.where('dietType', '==', dietType)).valueChanges();
+  }
+
+
+
   addMeal(meal: MealInterface){
     this.mealCollectionRef.add({
       id: meal.id,
@@ -36,4 +42,6 @@ export class MealService {
       calories: meal.calories
     })
   }
+
+
 }

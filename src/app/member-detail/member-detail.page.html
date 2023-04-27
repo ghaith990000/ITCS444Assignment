@@ -45,12 +45,34 @@
       <ion-button (click)="upd()" fill="clear" color="success">Edit</ion-button>
     </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col size="3">Total Fees: </ion-col>
           <ion-col size="6">{{memberDetails?.totalFees}}</ion-col>
         </ion-row>
       </ion-grid>
+      <ion-label>Choose 5 meals from the available meals for your diet:</ion-label>
+      <ion-list *ngIf="meals && meals.length > 0">
+        <ion-item *ngFor="let meal of meals">
+          <ion-label>{{meal.title}}</ion-label>
+          <ion-checkbox [(ngModel)]="meal.selected" (ionChange)="onMealSelect(meal)"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+
     </ion-card-content>
   </ion-card>
+  <ion-list>
+    <ion-list-header>Selected Meals:</ion-list-header>
+    <ion-item>
+      <ion-label>ID</ion-label>
+      <ion-label>Title</ion-label>
+      <ion-label>Calo</ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let selMeal of selectedMeals">
+      <ion-label>{{selMeal.id}}</ion-label>
+      <ion-label>{{selMeal.title}}</ion-label>
+      <ion-label>{{selMeal.calories}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -54,19 +54,23 @@ export class MemberService {
     )
   }
 update(memberDetails:any,total:number){
-this.membersCollectionRef.doc(memberDetails.id).update({
-  name:memberDetails.name,
-  age:memberDetails.age,
-  gender:memberDetails.gender,
-  phoneNumber:memberDetails.phoneNumber,
-  dietType:memberDetails.dietType,
-  subscriptionPlan:memberDetails.subscriptionPlan,
-  totalFees:total,
+  this.membersCollectionRef.doc(memberDetails.id).update({
+    name:memberDetails.name,
+    age:memberDetails.age,
+    gender:memberDetails.gender,
+    phoneNumber:memberDetails.phoneNumber,
+    dietType:memberDetails.dietType,
+    subscriptionPlan:memberDetails.subscriptionPlan,
+    totalFees:total,
 
-});
+  });
 }
 
 
+  // Add selected meals to member document
+  addSelectedMeals(memberId: string, selectedMeals: any[]){
+    return this.afs.collection('members').doc(memberId).update({meals: selectedMeals})
+  }
 
 
   removeMember(id: string) {
