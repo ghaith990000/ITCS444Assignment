@@ -3,7 +3,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 
 import { DocumentReference } from '@angular/fire/compat/firestore';
-import {map, take} from 'rxjs/operators';
+import {map, take, filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 interface MemberInterface {
@@ -11,6 +11,7 @@ interface MemberInterface {
   age: number;
   gender: string;
   phoneNumber: string;
+  meals: any[];
   dietType: string;
   subscriptionPlan: string;
   totalFees: number;
@@ -35,6 +36,7 @@ export class MemberService {
       name: name,
       age: age,
       gender: gender,
+      meals: [],
       phoneNumber: phoneNum,
       dietType: dietType,
       subscriptionPlan: subscriptionPlan,
@@ -68,9 +70,22 @@ update(memberDetails:any,total:number){
 
 
   // Add selected meals to member document
-  addSelectedMeals(memberId: string, selectedMeals: any[]){
-    return this.afs.collection('members').doc(memberId).update({meals: selectedMeals})
+  addSelectedMeals(memberId: string, meals: any[]){
+    return this.afs.collection('members').doc(memberId).update({meals: meals })
   }
+
+  getSelectedMeals(memberId: any){
+    return this.afs.collection('members').doc(memberId).valueChanges().pipe(
+      map((doc: any)=> {
+        if(doc && doc.hasOwnProperty('meals')){
+          return doc.meals;
+        }else {
+          return [];
+        }
+      })
+    )
+  }
+
 
 
   removeMember(id: string) {

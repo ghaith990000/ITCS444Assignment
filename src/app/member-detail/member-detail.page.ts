@@ -4,6 +4,7 @@ import { MemberService } from '../member.service';
 import { NavController } from '@ionic/angular';
 import { MealService } from '../meal.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-member-detail',
@@ -15,6 +16,7 @@ export class MemberDetailPage implements OnInit {
   subs:any;
   meals: any[] = [];
   selectedMeals: any[] = [];
+  selMeals: Observable<any>;
   memberDetails: any;
   constructor(public navCtrl:NavController, public afs: AngularFirestore,public ActRoute:ActivatedRoute, public memberSrv:MemberService, public mealSrv:MealService) {
     this.memberID = this.ActRoute.snapshot.paramMap.get('id');
@@ -37,7 +39,11 @@ export class MemberDetailPage implements OnInit {
         })
       });
     }
+
+    this.selMeals = this.memberSrv.getSelectedMeals(this.memberID);
   }
+
+
 
   onMealSelect(meal: any){
     if(meal.selected){
@@ -51,6 +57,7 @@ export class MemberDetailPage implements OnInit {
     }else {
       this.selectedMeals = this.selectedMeals.filter((m) => m.id !== meal.id)
     }
+    this.memberSrv.addSelectedMeals(this.memberID as string, this.selectedMeals);
   }
 
   // Step 5: Allow the member to select up to five meals
@@ -86,7 +93,4 @@ export class MemberDetailPage implements OnInit {
     this.memberSrv.update(this.memberDetails,total);
   }
 
-  addFiveMeals(){
-
-  }
 }
